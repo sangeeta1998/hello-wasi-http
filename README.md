@@ -43,6 +43,8 @@ $ curl https://wasmtime.dev/install.sh -sSf | bash
 Then, in a new terminal, we can run `wasmtime serve` on our Wasm component:
 ```
 $ wasmtime serve target/wasm32-wasi/debug/hello_wasi_http.wasm
+
+### To use a diff port: wasmtime serve --addr=0.0.0.0:8008 target/wasm32-wasi/debug/hello_wasi_http.wasm
 ```
 This starts up an HTTP server on `0.0.0.0:8080` (the specific address and port
 can be configured with the `--addr=` flag).
