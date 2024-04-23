@@ -54,7 +54,22 @@ With that running, in another window, we can now make requests!
 $ curl http://localhost:8080
 Hello, wasi:http/proxy world!
 ```
+Using DOCKER
 
+DOCKER FILE:
+```
+FROM scratch
+
+COPY ./target/wasm32-wasi/release/hello_wasi_http.wasm /hello_wasi_http.wasm
+
+ENTRYPOINT [ "/hello_wasi_http.wasm" ]
+
+```
+
+Running:
+```
+$ docker buildx build --platform wasi/wasm -t hello_wasi_http .
+```
 ## Optimizing!
 
 The above uses a debug build; to make a component that runs faster, build
